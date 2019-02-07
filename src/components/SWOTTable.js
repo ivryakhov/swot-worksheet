@@ -1,9 +1,7 @@
 import React from "react";
 import FactorList from "./FactorList";
 
-const SWOTTable = (props) => {
-  console.log("State ", props.state);
-  console.log("Weakness: ", props.state.weakness);
+const SWOTTable = () => {
   return (
     <table className="table">
     <thead>
@@ -18,22 +16,22 @@ const SWOTTable = (props) => {
         <th>Internal origin</th>
         <td>
           <h2><b>S</b>trengths</h2>
-          <FactorList factorList={props.state.strengths}/>
+          <FactorList area='strengths'/>
           </td>
         <td>
           <h2><b>W</b>eakness</h2>
-          <FactorList factorList={props.state.weakness}/>
+          <FactorList area='weakness'/>
         </td>
       </tr>
       <tr>
         <th>External origin</th>
         <td>
           <h2><b>O</b>pportunities</h2>
-          <FactorList factorList={props.state.opportunities}/>
+          <FactorList area='opportunities'/>
         </td>
         <td>
           <h2><b>T</b>hreats</h2>
-          <FactorList factorList={props.state.threats}/>
+          <FactorList area='threats'/>
         </td>
       </tr>
     </tbody>

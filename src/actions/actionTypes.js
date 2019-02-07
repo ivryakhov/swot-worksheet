@@ -1,0 +1,1 @@
+export const ADD_FACTOR = 'ADD_FACTOR';

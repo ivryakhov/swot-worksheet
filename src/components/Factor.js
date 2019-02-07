@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Factor = (props) => {
-  console.log("Factor", props.factor);
+const Factor = ({factor}) => {
   return (
-    <li>{props.factor}</li>
+    <li>{factor}</li>
   );
 };
 
