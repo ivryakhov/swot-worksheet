@@ -1,8 +1,14 @@
 import React from 'react';
 
-const Factor = ({factor}) => {
+const Factor = ({factor, onRemove}) => {
   return (
-    <li>{factor}</li>
+    <li>
+      {factor}
+      <input
+        type="submit"
+        value="Remove"
+        onClick={() => onRemove(factor)}/>
+    </li>
   );
 };
 

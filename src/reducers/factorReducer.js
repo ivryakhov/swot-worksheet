@@ -8,6 +8,11 @@ export default function factorReducer(state = initialState, action) {
       const newState = {...state, [action.area]: newArea };
       return newState
     }
+    case types.REMOVE_FACTOR: {
+      const newArea = state[action.area].filter(f => f !== action.factor);
+      const newState = {...state, [action.area]: newArea};
+      return newState;
+    }
     default:
       return state;
   }  

@@ -14,12 +14,17 @@ export class FactorList extends React.Component {
 
     this.updateNewFactor = this.updateNewFactor.bind(this);
     this.addFactor = this.addFactor.bind(this);
+    this.removeFactor = this.removeFactor.bind(this);
   }
 
   addFactor(event) {
     event.preventDefault();
     this.props.actions.addFactor(this.state.newFactor, this.props.area);
     this.setState({newFactor: ""});
+  }
+
+  removeFactor(factor) {
+    this.props.actions.removeFactor(factor, this.props.area);
   }
 
   updateNewFactor(event) {
@@ -31,7 +36,11 @@ export class FactorList extends React.Component {
       <React.Fragment>
         <ul>
           {this.props.factorList.map(
-            factor => <Factor key={factor} factor={factor}/>
+            factor =>
+              <Factor
+                key={factor}
+                factor={factor}
+                onRemove={this.removeFactor}/>
           )}
         </ul>
         <form>
