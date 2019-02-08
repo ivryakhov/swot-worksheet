@@ -9,7 +9,8 @@ export class FactorList extends React.Component {
     super(props, context);
 
     this.state = {
-        newFactor: ""
+        newFactor: "",
+        error: ""
     };
 
     this.updateNewFactor = this.updateNewFactor.bind(this);
@@ -17,8 +18,24 @@ export class FactorList extends React.Component {
     this.removeFactor = this.removeFactor.bind(this);
   }
 
+  newFactorFormIsValid() {
+    let formIsValid = true;
+    let error = "";
+
+    if (this.state.newFactor.length < 1) {
+      error = 'New factor can\'t be empty';
+      formIsValid  = false;
+    }
+    this.setState({error: error});
+    return formIsValid;
+  }
+
   addFactor(event) {
     event.preventDefault();
+
+    if(!this.newFactorFormIsValid())
+      return;
+
     this.props.actions.addFactor(this.state.newFactor, this.props.area);
     this.setState({newFactor: ""});
   }
@@ -50,11 +67,12 @@ export class FactorList extends React.Component {
             class-name="form-control"
             placeholder="Add new factor"
             value={this.state.newFactor}
-            onChange={this.updateNewFactor}/>
+            onChange={this.updateNewFactor}/>            
           <input
             type="submit"
             value='Add'
             onClick={this.addFactor}/>
+          {this.state.error && <div>{this.state.error}</div>}
         </form>
      </React.Fragment>
     );
