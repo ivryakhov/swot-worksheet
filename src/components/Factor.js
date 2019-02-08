@@ -4,7 +4,7 @@ const Factor = ({factor, onRemove}) => {
   return (
     <li>
       {factor}
-      <input
+      <button className="delete is-pulled-right has-background-grey-light"
         type="submit"
         value="Remove"
         onClick={() => onRemove(factor)}/>
